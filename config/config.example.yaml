@@ -1,0 +1,27 @@
+# SPICA 설정 템플릿.
+# 이 파일을 config/config.yaml 로 복사한 뒤 실제 환경 값으로 채운다.
+# config.yaml 은 .gitignore 에 포함되어 깃에 올라가지 않는다.
+
+# 정상 게이트웨이(가상 공유기)의 IP 주소
+gateway_ip: "192.168.10.1"
+
+# 정상 게이트웨이의 MAC 주소. ARP 스푸핑 판단의 기준값이 된다.
+# 모르는 경우 게이트웨이에 ping 후 'ip neigh' 또는 'arp -n' 으로 확인한다.
+gateway_mac: "00:00:00:00:00:00"
+
+# IP를 나눠줘도 되는(허가된) DHCP 서버의 MAC 목록.
+# 여기에 없는 장비가 DHCP 응답을 보내면 비인가 공유기로 판단한다.
+allowed_dhcp_server_macs:
+  - "00:00:00:00:00:00"
+
+# SYN 홍수 판단 기준: 1초 동안 한 대상에게 이 수를 넘는 SYN 패킷이 오면 의심한다.
+syn_flood_threshold_per_second: 200
+
+# SYN 대비 ACK 비율이 이 값보다 낮으면 응답 없는 홍수성 트래픽으로 판단한다.
+syn_ack_ratio_threshold: 0.3
+
+# 차단 지속 시간(분). 이 시간이 지나면 차단이 자동으로 풀린다.
+block_duration_minutes: 10
+
+# 절대 차단하면 안 되는 MAC 목록(오탐 방지용 화이트리스트).
+whitelist_macs: []

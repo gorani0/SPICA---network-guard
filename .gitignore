@@ -1,0 +1,22 @@
+# 파이썬
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+*.egg-info/
+
+# 실제 환경 설정(민감한 값이 들어갈 수 있어 올리지 않음)
+config/config.yaml
+
+# 런타임 산출물
+events.jsonl
+*.log
+
+# 학습 모델과 데이터셋(용량이 크고 다시 생성할 수 있음)
+*.joblib
+ml/datasets/*
+!ml/datasets/.gitkeep
+
+# 운영체제 생성 파일
+.DS_Store
+Thumbs.db
